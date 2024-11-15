@@ -5,21 +5,24 @@ import Header from './Components/Header'
 import Footer from './Components/Footer'
 import CreateContent from './Components/CreateContent'
 import HomePage from './Components/HomePage'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 function App() {
-  const [selectedTab, setSelectedTab] = useState("Home");
 
   return (
-    <>
+    <BrowserRouter>
       <div className='app-container'>
-        <SideBar selectedTab={selectedTab} setSelectedTab={setSelectedTab} />
+        <SideBar />
         <div className='header-footer'>
           <Header />
-          {selectedTab === "Home" ? <HomePage /> : <CreateContent />}
+          <Routes>
+            <Route path='/' element={<HomePage />}></Route>
+            <Route path="/CreateContent" element={<CreateContent />}></Route>
+          </Routes>
           <Footer />
         </div>
       </div>
-    </>
+    </BrowserRouter>
   )
 }
 
