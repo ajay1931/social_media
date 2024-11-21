@@ -1,9 +1,10 @@
 import React from 'react'
+import ProductListStore from '../Store/ProductListStore'
 
 const HomePage = () => {
   return (
-    <div>
-      Nothing here
+    <div className='HomePage'>
+      <ProductListStore/>
     </div>
   )
 }

@@ -10,4 +10,22 @@
     height: 780px;
 }
 
+.HomePage{
+    margin: 20px;
+}
 
+.productliststore{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.reactions{
+    display:flex;
+    gap: 3px;
+}
+
+.createcontent-form{
+    margin: 50px;
+    width: 50rem;
+}

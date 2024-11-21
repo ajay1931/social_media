@@ -9,7 +9,8 @@ const CreateContent = () => {
                     type="text"
                     className="form-control"
                     id="exampleInputEmail1"
-                    placeholder='Enter your post tittle here' />
+                    placeholder='Enter your post tittle here'
+                    required />
             </div>
             <div className="mb-3">
                 <label className="form-label">Post content</label>
@@ -17,7 +18,8 @@ const CreateContent = () => {
                     type="textarea"
                     className="form-control"
                     id="exampleInputEmail1"
-                    placeholder='Enter your post content here' />
+                    placeholder='Enter your post content here'
+                    required />
             </div>
             <div className="mb-3">
                 <label className="form-label">Hash Tags</label>
@@ -25,7 +27,8 @@ const CreateContent = () => {
                     type="text"
                     className="form-control"
                     id="exampleInputEmail1"
-                    placeholder='Enter yout hashtag here' />
+                    placeholder='Enter yout hashtag here'
+                    required />
             </div>
 
             <button type="submit" className="btn btn-primary">Post</button>
