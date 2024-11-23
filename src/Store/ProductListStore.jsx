@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Post from '../Components/Post';
+import CreateContent from '../Components/CreateContent';
 
 const POST_LIST = [
     {
@@ -61,22 +62,23 @@ const POST_LIST = [
 ]
 
 const ProductListStore = () => {
-    let RandomNumber = () => {
-        return Math.floor(Math.random() * 100000000);
-    };
-
     const [posts, setPosts] = useState(POST_LIST);
 
     let deletePost = (id) => {
         setPosts(posts.filter((post, index) => index !== id))
     }
 
+    let addPost=(newPost)=>{
+        setPosts([newPost,...posts])
+    }
+
     return (
         <div className='productliststore'>
+            <CreateContent addPost={addPost}/>
             {posts.map((post, index) => (
                 <Post
                     key={index}
-                    id={RandomNumber()}
+                    id={index}
                     title={post.title}
                     body={post.body}
                     reactions={post.reactions}

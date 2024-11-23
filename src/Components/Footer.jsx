@@ -3,13 +3,36 @@ import React from 'react'
 const Footer = () => {
     return (
         <div>
-            <main className="flex-shrink-0">
-                <div className="container">
-                    <h1 className="mt-5">Sticky footer</h1>
-                    <p className="lead">Pin a footer to the bottom of the viewport in desktop browsers with this custom HTML and CSS.</p>
-                    <p>Use <a href="/docs/5.0/examples/sticky-footer-navbar/">the sticky footer with a fixed navbar</a> if need be, too.</p>
-                </div>
-            </main>
+            <footer class="py-3 my-4">
+                <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link px-2 text-muted">
+                            Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link px-2 text-muted">
+                            Features
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link px-2 text-muted">
+                            Pricing
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link px-2 text-muted">
+                            FAQs
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link px-2 text-muted">
+                            About
+                        </a>
+                    </li>
+                </ul>
+                <p class="text-center text-muted">© 2021 Company, Inc</p>
+            </footer>
         </div>
     )
 }

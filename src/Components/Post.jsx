@@ -9,11 +9,11 @@ const Post = ({ id, title, body, reactions, tags = [], deletePost, user }) => {
         <div className="card" style={{ width: "18rem" }}>
             <div className="card-body">
                 <h3 className="card-title">{user}</h3>
-                <h6 class="card-subtitle mb-2 text-muted">{title}</h6>
+                <h6 class="card-subtitle mb-2 text-muted" >{title}</h6>
                 <p className="card-text">{body}</p>
                 <span className='reactions'>
                     <FcLike onClick={() => setReaction(reaction + 1)} />
-                    <p>{reaction}</p>
+                    <p style={{paddingTop:'15px'}}>{reaction}</p>
                 </span>
                 <span>
                     {tags.map((tag, index) => (

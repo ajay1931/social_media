@@ -1,31 +1,40 @@
-.app-container{
+.app-container {
     display: flex;
 }
 
-.header-footer{
+.header-footer {
     width: 100%;
 }
 
-.sidebar{
-    height: 780px;
+.sidebar {
+    min-height: 500px;
 }
 
-.HomePage{
+.createcontent{
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.createcontent-form{
+    width: 50rem;
+}
+
+.HomePage {
     margin: 20px;
 }
 
-.productliststore{
+.productliststore {
     display: flex;
     flex-wrap: wrap;
     gap: 1.5rem;
 }
 
-.reactions{
-    display:flex;
-    gap: 3px;
+.reactions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 18px;
 }
 
-.createcontent-form{
-    margin: 50px;
-    width: 50rem;
-}
