@@ -1,10 +1,22 @@
-import React from 'react'
-import ProductListStore from '../Store/ProductListStore'
+import React, { useContext } from 'react'
+import { postListContext } from '../Store/ProductListStore'
+import Post from './Post'
 
 const HomePage = () => {
+  const { posts } = useContext(postListContext)
   return (
     <div className='HomePage'>
-      <ProductListStore/>
+      {posts.map((post, index) => (
+        <Post
+          key={index}
+          id={index}
+          title={post.title}
+          body={post.body}
+          reactions={post.reactions}
+          tags={post.tags}
+          userId={post.userId}
+        ></Post>
+      ))}
     </div>
   )
 }

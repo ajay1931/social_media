@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, createContext, Children } from 'react'
 import Post from '../Components/Post';
-import CreateContent from '../Components/CreateContent';
 
 const POST_LIST = [
     {
@@ -61,33 +60,27 @@ const POST_LIST = [
     },
 ]
 
-const ProductListStore = () => {
+export const postListContext = createContext({
+    posts:[],
+    addPost:()=>{},
+    deletePost:()=>{},
+});
+
+const ProductListStore = ({ children }) => {
     const [posts, setPosts] = useState(POST_LIST);
 
     let deletePost = (id) => {
         setPosts(posts.filter((post, index) => index !== id))
     }
 
-    let addPost=(newPost)=>{
-        setPosts([newPost,...posts])
+    let addPost = (newPost) => {
+        setPosts([newPost, ...posts])
     }
 
     return (
-        <div className='productliststore'>
-            <CreateContent addPost={addPost}/>
-            {posts.map((post, index) => (
-                <Post
-                    key={index}
-                    id={index}
-                    title={post.title}
-                    body={post.body}
-                    reactions={post.reactions}
-                    tags={post.tags}
-                    deletePost={deletePost}
-                    user={post.userId}
-                />
-            ))}
-        </div>
+        <postListContext.Provider value={{ posts, addPost, deletePost }}>
+            {children}
+        </postListContext.Provider>
     )
 }
 
