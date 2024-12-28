@@ -4,7 +4,7 @@ This is a simple Social Media Application built using React.js. It features a si
 
 ## Features
 
-** Dynamic Post Management: **
+**Dynamic Post Management:**
 
 - Add new posts with title, content, hashtags, and reactions.
 
@@ -12,17 +12,17 @@ This is a simple Social Media Application built using React.js. It features a si
 
 - React to posts with a like button.
 
-** Navigation: **
+**Navigation:**
 
 - Sidebar for quick navigation between Home and Create Content pages.
 
 - Active tab highlighting.
 
-- Responsive Design:
+**Responsive Design:**
 
 - Mobile-friendly layout with flexible components.
 
-** Tech Stack: **
+**Tech Stack:**
 
 - Frontend: React.js, React Router
 
