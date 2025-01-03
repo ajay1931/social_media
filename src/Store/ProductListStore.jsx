@@ -1,5 +1,5 @@
 import React, { useState, createContext, Children } from 'react'
-import Post from '../Components/Post';
+import { toast } from 'react-toast';
 
 const POST_LIST = [
     {
@@ -27,7 +27,7 @@ const POST_LIST = [
         title: "Art Exhibition Visit",
         body: "Visited the modern art exhibition, so inspiring!",
         reactions: 7,
-        userId: "user-2",
+        userId: "user-9",
         tags: ["art", "inspiration", "gallery"],
     },
     {
@@ -55,30 +55,38 @@ const POST_LIST = [
         title: "Coffee Time",
         body: "Trying out a new local cafe - the coffee is amazing!",
         reactions: 18,
-        userId: "user-1",
+        userId: "user-10",
         tags: ["coffee", "cafe", "local"],
     },
 ]
 
 export const postListContext = createContext({
-    posts:[],
-    addPost:()=>{},
-    deletePost:()=>{},
+    posts: [],
+    addPost: () => { },
+    deletePost: () => { },
+    UserID: '',
+    setUserID: () => { },
+    setIsLoggedIn: () => { },
 });
 
 const ProductListStore = ({ children }) => {
     const [posts, setPosts] = useState(POST_LIST);
+    const [UserID, setUserID] = useState("");
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
+
 
     let deletePost = (id) => {
         setPosts(posts.filter((post, index) => index !== id))
+        toast.error('Post deleted sucessfully')
     }
 
     let addPost = (newPost) => {
-        setPosts([newPost, ...posts])
+        setPosts([newPost, ...posts, { ...newPost, isUserCreated: true }])
+        toast.success('Post added sucessfully')
     }
 
     return (
-        <postListContext.Provider value={{ posts, addPost, deletePost }}>
+        <postListContext.Provider value={{ posts, addPost, deletePost, UserID, setUserID, isLoggedIn, setIsLoggedIn }}>
             {children}
         </postListContext.Provider>
     )

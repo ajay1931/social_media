@@ -4,27 +4,31 @@ import SideBar from './Components/SideBar'
 import Header from './Components/Header'
 import Footer from './Components/Footer'
 import CreateContent from './Components/CreateContent'
-import HomePage from './Components/HomePage'
+import YourPost from './Components/YourPost'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import ProductListStore from './Store/ProductListStore'
+import Login from './Components/Login'
+import Home from './Components/Home'
 
 function App() {
 
   return (
     <BrowserRouter>
-      <div className='app-container'>
-        <SideBar />
-        <div className='header-footer'>
-          <Header />
-          <ProductListStore>
+      <ProductListStore>
+        <div className='app-container'>
+          <SideBar />
+          <div className='header-footer'>
+            <Header />
             <Routes>
-              <Route path='/' element={<HomePage />}></Route>
+              <Route path='/' element={<Home />}></Route>
+              <Route path='/yourpost' element={<YourPost />}></Route>
               <Route path="/CreateContent" element={<CreateContent />}></Route>
+              <Route path="/Login" element={<Login />}></Route>
             </Routes>
-          </ProductListStore>
-          <Footer />
+            <Footer />
+          </div>
         </div>
-      </div>
+      </ProductListStore>
     </BrowserRouter>
   )
 }
