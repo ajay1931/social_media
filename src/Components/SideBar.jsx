@@ -1,10 +1,16 @@
 import React, { useContext } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { postListContext } from '../Store/ProductListStore';
+import toast from 'react-hot-toast';
 
 const SideBar = () => {
     let location = useLocation();
     const { UserID, isLoggedIn, setIsLoggedIn } = useContext(postListContext)
+
+    const handleLogout =()=>{
+        setIsLoggedIn(false);
+        toast.success('Logged out successfully')
+    }
     return (
         <div className="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark sidebar" style={{ width: "240px" }}>
             <Link to="/" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
@@ -23,9 +29,9 @@ const SideBar = () => {
                 </li>
                 <li
                 >
-                    <Link to={"/CreateContent"} className={`nav-link text-white ${location.pathname === '/CreateContent' ? 'active' : ''}  `}>
+                    <Link to={"/CreatePost"} className={`nav-link text-white ${location.pathname === '/CreatePost' ? 'active' : ''}  `}>
                         <svg className="bi me-2" width="16" height="16"><use xlinkHref="#speedometer2"></use></svg>
-                        Create content
+                        Create Post
                     </Link>
                 </li>
             </ul>
@@ -40,8 +46,8 @@ const SideBar = () => {
                     )}
                 </a>
                 <ul className="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                    <li><a onClick={handleLogout} className="dropdown-item" href="#">Logout</a></li>
                     <li><a className="dropdown-item" href="#">Settings</a></li>
-                    <li><a onClick={() =>setIsLoggedIn(false)} className="dropdown-item" href="#">Sign out</a></li>
                 </ul>
             </div>
         </div >

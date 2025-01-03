@@ -1,7 +1,14 @@
 import React, { useState, createContext, Children } from 'react'
-import { toast } from 'react-toast';
+import toast from 'react-hot-toast';
 
 const POST_LIST = [
+    {
+        title: "A Peaceful Retreat in Kyoto",
+        body: "Spending time in Kyoto for a peaceful retreat among the temples and nature.",
+        reactions: 80,
+        userId: "user-14",
+        tags: ["kyoto", "temples", "peace"]
+    },
     {
         title: "Going To Chennai",
         body: "Going to Chennai for my vacation",
@@ -22,13 +29,6 @@ const POST_LIST = [
         reactions: 10,
         userId: "user-7",
         tags: ["fitness", "morning", "run"],
-    },
-    {
-        title: "Art Exhibition Visit",
-        body: "Visited the modern art exhibition, so inspiring!",
-        reactions: 7,
-        userId: "user-9",
-        tags: ["art", "inspiration", "gallery"],
     },
     {
         title: "Cooking Up Some Pasta",
@@ -58,6 +58,49 @@ const POST_LIST = [
         userId: "user-10",
         tags: ["coffee", "cafe", "local"],
     },
+    {
+        title: "Exploring the Streets of Paris",
+        body: "Spending some time in Paris, exploring its beautiful streets and cafes.",
+        reactions: 92,
+        userId: "user-11",
+        tags: ["paris", "travel", "streets"]
+    },
+    {
+        title: "Backpacking Through Thailand",
+        body: "Starting my backpacking journey through Thailand, excited for the adventure ahead!",
+        reactions: 200,
+        userId: "user-15",
+        tags: ["thailand", "backpacking", "adventure"]
+    },
+    {
+        title: "Weekend Getaway to London",
+        body: "Visiting London for a weekend of sightseeing and exploring new places.",
+        reactions: 120,
+        userId: "user-12",
+        tags: ["london", "weekend", "sightseeing"]
+    },
+    {
+        title: "A Day in New York City",
+        body: "Walking around New York City, taking in the sights and the hustle and bustle.",
+        reactions: 150,
+        userId: "user-13",
+        tags: ["new york", "city", "adventure"]
+    },
+    {
+        title: "Morning Jog in the Park",
+        body: "Enjoying a peaceful jog in the park to start the day fresh and energized.",
+        reactions: 45,
+        userId: "user-1",
+        tags: ["jog", "morning", "park"]
+    },
+    {
+        title: "Reading a New Book",
+        body: "Currently reading a fascinating book about technology and innovation.",
+        reactions: 30,
+        userId: "user-2",
+        tags: ["reading", "book", "technology"]
+    },
+
 ]
 
 export const postListContext = createContext({
@@ -81,7 +124,7 @@ const ProductListStore = ({ children }) => {
     }
 
     let addPost = (newPost) => {
-        setPosts([newPost, ...posts, { ...newPost, isUserCreated: true }])
+        setPosts([newPost, ...posts])
         toast.success('Post added sucessfully')
     }
 

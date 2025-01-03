@@ -3,20 +3,20 @@ import { postListContext } from '../Store/ProductListStore'
 import Post from './Post'
 
 const YourPost = () => {
-  const { posts } = useContext(postListContext);
-  const createdPosts = posts.filter(post => post.isUserCreated);
+  const { posts, UserID, isLoggedIn } = useContext(postListContext);
+  const createdPosts = posts.filter(post => post.userId === UserID);
 
   return (
     <div className='Yourpost'>
-      {createdPosts.length > 0 ? (createdPosts.map((post, index) => (
-          <Post
-            key={index}
-            id={index}
-            title={post.title}
-            body={post.body}
-            reactions={post.reactions}
-            tags={post.tags}
-          /> ))
+      {isLoggedIn ? (createdPosts.map((post, index) => (
+        <Post
+          key={index}
+          id={index}
+          title={post.title}
+          body={post.body}
+          reactions={post.reactions}
+          tags={post.tags}
+        />))
       ) : (
         <p className='Yourpost-para'>Create post</p>)
       }

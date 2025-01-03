@@ -3,12 +3,13 @@ import './App.css'
 import SideBar from './Components/SideBar'
 import Header from './Components/Header'
 import Footer from './Components/Footer'
-import CreateContent from './Components/CreateContent'
+import CreatePost from './Components/CreatePost'
 import YourPost from './Components/YourPost'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import ProductListStore from './Store/ProductListStore'
 import Login from './Components/Login'
 import Home from './Components/Home'
+import { Toaster } from 'react-hot-toast';
 
 function App() {
 
@@ -22,11 +23,12 @@ function App() {
             <Routes>
               <Route path='/' element={<Home />}></Route>
               <Route path='/yourpost' element={<YourPost />}></Route>
-              <Route path="/CreateContent" element={<CreateContent />}></Route>
+              <Route path="/CreatePost" element={<CreatePost />}></Route>
               <Route path="/Login" element={<Login />}></Route>
             </Routes>
             <Footer />
           </div>
+          <Toaster />
         </div>
       </ProductListStore>
     </BrowserRouter>

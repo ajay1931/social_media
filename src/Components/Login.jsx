@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { CiCircleRemove } from "react-icons/ci";
-import { toast } from 'react-toast';
+import toast from 'react-hot-toast';
 import { postListContext } from '../Store/ProductListStore';
 
 const Login = ({ LoginPage, setLoginPage }) => {
@@ -13,7 +13,7 @@ const Login = ({ LoginPage, setLoginPage }) => {
     const handleLogin = (e) => {
         e.preventDefault();
 
-        if ((UserLogin === 'User-1' || UserLogin === 'User-2') && Password === '1234') {
+        if ((UserLogin === 'user-1' || UserLogin === 'user-2') && Password === '1234') {
             setLoginPage(false)
             setIsLoggedIn(true)
             setUserID(UserLogin)
@@ -37,6 +37,7 @@ const Login = ({ LoginPage, setLoginPage }) => {
                             className="form-control"
                             id="exampleInputEmail1"
                             aria-describedby="emailHelp"
+                            required
                         />
                         <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
                     </div>
@@ -48,9 +49,10 @@ const Login = ({ LoginPage, setLoginPage }) => {
                             onChange={(e) => setPassword(e.target.value)}
                             className="form-control"
                             id="exampleInputPassword1"
+                            required
                         />
                     </div>
-                    <button onClick={handleLogin} className="btn btn-primary">Login</button>
+                    <button onClick={handleLogin} type='submit' className="btn btn-primary">Login</button>
                     <div className='Loginform-delete' onClick={() => setLoginPage(false)}>
                         <CiCircleRemove />
                     </div>
