@@ -112,7 +112,7 @@ export const postListContext = createContext({
     setIsLoggedIn: () => { },
 });
 
-const ProductListStore = ({ children }) => {
+const PostListStore = ({ children }) => {
     const [posts, setPosts] = useState(POST_LIST);
     const [UserID, setUserID] = useState("");
     const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -135,4 +135,4 @@ const ProductListStore = ({ children }) => {
     )
 }
 
-export default ProductListStore
+export default PostListStore

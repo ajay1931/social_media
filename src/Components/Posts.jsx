@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react'
 import { FcLike } from "react-icons/fc";
 import { MdDelete } from "react-icons/md";
-import { postListContext } from '../Store/ProductListStore';
+import { postListContext } from '../Store/PostListStore';
 
-const Post = ({ id, title, body, reactions, tags = [], userId }) => {
+const Posts = ({ id, title, body, reactions, tags = [], userId }) => {
     const { deletePost } = useContext(postListContext);
 
     const [reaction, setReaction] = useState(reactions);
@@ -34,4 +34,4 @@ const Post = ({ id, title, body, reactions, tags = [], userId }) => {
     )
 }
 
-export default Post
+export default Posts

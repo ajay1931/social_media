@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import Login from './Login'
 import { Link, useLocation } from 'react-router-dom'
-import { postListContext } from '../Store/ProductListStore'
+import { postListContext } from '../Store/PostListStore'
 
 const Header = () => {
     let location = useLocation()

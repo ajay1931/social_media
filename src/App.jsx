@@ -6,7 +6,7 @@ import Footer from './Components/Footer'
 import CreatePost from './Components/CreatePost'
 import YourPost from './Components/YourPost'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import ProductListStore from './Store/ProductListStore'
+import PostListStore from './Store/PostListStore'
 import Login from './Components/Login'
 import Home from './Components/Home'
 import { Toaster } from 'react-hot-toast';
@@ -15,7 +15,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <ProductListStore>
+      <PostListStore>
         <div className='app-container'>
           <SideBar />
           <div className='header-footer'>
@@ -30,7 +30,7 @@ function App() {
           </div>
           <Toaster />
         </div>
-      </ProductListStore>
+      </PostListStore>
     </BrowserRouter>
   )
 }

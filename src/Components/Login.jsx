@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import { CiCircleRemove } from "react-icons/ci";
 import toast from 'react-hot-toast';
-import { postListContext } from '../Store/ProductListStore';
+import { postListContext } from '../Store/PostListStore';
 
 const Login = ({ LoginPage, setLoginPage }) => {
     const { setUserID, setIsLoggedIn } = useContext(postListContext)

@@ -1,13 +1,13 @@
 import React, { useContext } from 'react'
-import { postListContext } from '../Store/ProductListStore'
-import Post from './Post'
+import { postListContext } from '../Store/PostListStore'
+import Posts from './Posts'
 
 const Home = () => {
     const { posts } = useContext(postListContext)
     return (
         <div className='Home'>
             {posts.map((post, index) => (
-                <Post
+                <Posts
                     key={index}
                     id={index}
                     title={post.title}
@@ -15,7 +15,7 @@ const Home = () => {
                     reactions={post.reactions}
                     tags={post.tags}
                     userId={post.userId}
-                ></Post>
+                />
             ))}
         </div>
     )

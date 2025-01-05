@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { postListContext } from '../Store/ProductListStore';
+import { postListContext } from '../Store/PostListStore';
 import toast from 'react-hot-toast';
 
 const SideBar = () => {
