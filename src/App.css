@@ -69,3 +69,9 @@
     cursor: pointer;
     color: #d21717;
 }
+
+.Loginform-text{
+    padding-top: 10px;
+    color: blue;
+    cursor: pointer;
+}
