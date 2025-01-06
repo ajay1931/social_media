@@ -1,32 +1,38 @@
-# Social Media Application 
+# Social Media Application
+This is a simple Social Media Application built using React.js. It features a side navigation bar, a home page to display posts and a content creation page where users can add new posts. The application utilizes React Context API for state management and React Router for navigation.
 
-This is a simple Social Media Application built using React.js. It features a side navigation bar, a home page to display posts, and a content creation page where users can add new posts. The application utilizes React Context for state management and React Router for navigation.
+## Features 
 
-## Features
+### Dynamic Post Management
 
-**Dynamic Post Management:**
+**Add New Posts:**
 
-- Add new posts with title, content, hashtags, and reactions.
+- Users can add new posts by filling in a form with a title, content and optional hashtags.
 
-- Delete posts from the home page.
+**Your Posts:**
 
-- React to posts with a like button.
+- View only the posts created by the logged-in user.
 
-**Navigation:**
+**Delete Posts:**
 
-- Sidebar for quick navigation between Home and Create Content pages.
+- Posts can be deleted from both the Home page and Your Posts page.
 
-- Active tab highlighting.
+**Like/React to Posts:**
 
-**Responsive Design:**
+- Posts can be liked by users, and the like count is updated in real-time.
 
-- Mobile-friendly layout with flexible components.
+### Navigation
 
-**Tech Stack:**
+**Sidebar Navigation:**
 
-- Frontend: React.js, React Router
+- A collapsible sidebar for quick navigation between the Home and Create Content pages.
 
-- State Management: React Context API
+**Active Tab Highlighting:**
 
-- Styling: Bootstrap, CSS
+- The active tab is highlighted with a different background color and blur effect for a better user experience.
 
+**Responsive Design**
+
+- The application is fully responsive, ensuring a smooth experience on both desktop and mobile devices.
+
+- Components are styled using Bootstrap and custom CSS to maintain a consistent UI.
