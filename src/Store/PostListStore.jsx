@@ -143,11 +143,19 @@ const PostListStore = ({ children }) => {
         ));
     }
 
-
-
-
     return (
-        <postListContext.Provider value={{ posts, addPost, deletePost, userName, setuserName, isLoggedIn, setIsLoggedIn, setPosts, updateReaction, generateRandomId }}>
+        <postListContext.Provider value={{
+            posts,
+            addPost,
+            deletePost,
+            userName,
+            setuserName,
+            isLoggedIn,
+            setIsLoggedIn,
+            setPosts,
+            updateReaction,
+            generateRandomId,
+        }}>
             {children}
         </postListContext.Provider>
     )

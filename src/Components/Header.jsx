@@ -5,8 +5,7 @@ import { postListContext } from '../Store/PostListStore'
 
 const Header = () => {
     let location = useLocation()
-    const [LoginPage, setLoginPage] = useState(false)
-    const { isLoggedIn, userName } = useContext(postListContext)
+    const { userName, isLoggedIn } = useContext(postListContext)
 
     return (
         <div>
@@ -32,16 +31,12 @@ const Header = () => {
                             {isLoggedIn ? (
                                 <h3>{userName}</h3>
                             ) : (
-                                <button onClick={() => setLoginPage(true)} type="button" className="btn btn-outline-light me-2">Login</button>
-                            )
-                            }
+                                <h3>Login</h3>
+                            )}
                         </div>
                     </div>
                 </div>
             </header>
-            <div>
-                <Login LoginPage={LoginPage} setLoginPage={setLoginPage} />
-            </div>
         </div>
     )
 }

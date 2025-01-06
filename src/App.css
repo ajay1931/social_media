@@ -20,7 +20,7 @@
     max-width: 50rem;
 }
 
-.Yourpost {
+.Yourpost-container {
     margin: 20px;
     display: flex;
     flex-wrap: wrap;

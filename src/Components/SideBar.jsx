@@ -1,14 +1,16 @@
 import React, { useContext } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { postListContext } from '../Store/PostListStore';
 import toast from 'react-hot-toast';
 
 const SideBar = () => {
     let location = useLocation();
-    const { userName, isLoggedIn, setIsLoggedIn } = useContext(postListContext)
+    const { userName, setIsLoggedIn, isLoggedIn } = useContext(postListContext)
+    let navigate = useNavigate()
 
-    const handleLogout =()=>{
-        setIsLoggedIn(false);
+    const handleLogout = () => {
+        setIsLoggedIn(false)
+        navigate('/Login')
         toast.success('Logged out successfully')
     }
     return (
@@ -42,7 +44,7 @@ const SideBar = () => {
                     {isLoggedIn ? (
                         <strong>{userName}</strong>
                     ) : (
-                        <h3>Login</h3>
+                        <strong>Login</strong>
                     )}
                 </a>
                 <ul className="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">

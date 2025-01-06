@@ -3,7 +3,7 @@ import { FcLike } from "react-icons/fc";
 import { MdDelete } from "react-icons/md";
 import { postListContext } from '../Store/PostListStore';
 
-const Posts = ({ userName, id, title, body, reactions, tags = [], userId }) => {
+const Posts = ({ userName, id, title, body, reactions, tags = [], userId ,showDelete }) => {
     const { deletePost, updateReaction } = useContext(postListContext);
 
     return (
@@ -22,12 +22,14 @@ const Posts = ({ userName, id, title, body, reactions, tags = [], userId }) => {
                     ))}
                 </span>
             </div>
-            <span
-                className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-                onClick={() => deletePost(id)}
-            >
-                <MdDelete />
-            </span>
+            {showDelete && (
+                <span
+                    className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                    onClick={() => deletePost(id)}
+                >
+                    <MdDelete />
+                </span>
+            )}
         </div>
     )
 }
