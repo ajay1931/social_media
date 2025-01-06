@@ -9,12 +9,12 @@ const Home = () => {
             {posts.map((post, index) => (
                 <Posts
                     key={index}
-                    id={index}
+                    userName={post.userName}
+                    id={post.userId}
                     title={post.title}
                     body={post.body}
                     reactions={post.reactions}
                     tags={post.tags}
-                    userId={post.userId}
                 />
             ))}
         </div>

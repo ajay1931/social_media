@@ -4,7 +4,7 @@ import toast from 'react-hot-toast';
 import { postListContext } from '../Store/PostListStore';
 
 const Login = ({ LoginPage, setLoginPage }) => {
-    const { setUserID, setIsLoggedIn } = useContext(postListContext)
+    const { setuserName, setIsLoggedIn } = useContext(postListContext)
     const [UserLogin, setUserLogin] = useState("");
     const [Password, setPassword] = useState("");
 
@@ -16,7 +16,7 @@ const Login = ({ LoginPage, setLoginPage }) => {
         if ((UserLogin === 'user-1' || UserLogin === 'user-2') && Password === '1234') {
             setLoginPage(false)
             setIsLoggedIn(true)
-            setUserID(UserLogin)
+            setuserName(UserLogin)
             toast.success('Loged in sucessfully')
         } else {
             toast.error('Invalid ID or Password')

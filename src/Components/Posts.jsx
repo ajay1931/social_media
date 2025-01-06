@@ -1,22 +1,20 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { FcLike } from "react-icons/fc";
 import { MdDelete } from "react-icons/md";
 import { postListContext } from '../Store/PostListStore';
 
-const Posts = ({ id, title, body, reactions, tags = [], userId }) => {
-    const { deletePost } = useContext(postListContext);
-
-    const [reaction, setReaction] = useState(reactions);
+const Posts = ({ userName, id, title, body, reactions, tags = [], userId }) => {
+    const { deletePost, updateReaction } = useContext(postListContext);
 
     return (
         <div className="card" style={{ width: "18rem" }}>
             <div className="card-body">
-                <h3 className="card-title">{userId}</h3>
+                <h3 className="card-title">{userName}</h3>
                 <h6 className="card-subtitle mb-2 text-muted" >{title}</h6>
                 <p className="card-text">{body}</p>
                 <span className='reactions'>
-                    <FcLike onClick={() => setReaction(reaction + 1)} />
-                    <p style={{ paddingTop: '15px' }}>{reaction}</p>
+                    <FcLike onClick={() => updateReaction(id)} />
+                    <p style={{ paddingTop: '15px' }}>{reactions}</p>
                 </span>
                 <span>
                     {tags.map((tag, index) => (
