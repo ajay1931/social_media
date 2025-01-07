@@ -23,6 +23,7 @@ function App() {
 
   return (
     <>
+      <Toaster />
       {
         isLoggedIn ? (
           <div className='app-container'>
@@ -37,7 +38,6 @@ function App() {
               </Routes>
               <Footer />
             </div>
-            <Toaster />
           </div>
         ) : (
           <Login />

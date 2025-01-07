@@ -1,4 +1,4 @@
-import React, { useState, createContext } from 'react'
+import React, { useState, createContext, useEffect } from 'react'
 import toast from 'react-hot-toast';
 
 const POST_LIST = [
@@ -122,25 +122,71 @@ const POSTS_WITH_IDS = POST_LIST.map(post => ({
 }));
 
 const PostListStore = ({ children }) => {
-    const [posts, setPosts] = useState(POSTS_WITH_IDS);
+    const [posts, setPosts] = useState(() => {
+        const localPosts = JSON.parse(localStorage.getItem('posts')) || [];
+        const combinedPosts = [...POSTS_WITH_IDS, ...localPosts.filter(
+            (localPost) => !POSTS_WITH_IDS.some((initialPost) => initialPost.userId === localPost.userId)
+        )];
+        return combinedPosts;
+
+    });
     const [userName, setuserName] = useState("");
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+    useEffect(() => {
+        const handleStorageChange = (event) => {
+            if (event.key === 'posts') {
+                const updatedPosts = JSON.parse(localStorage.getItem('posts')) || [];
+                setPosts([
+                    ...POSTS_WITH_IDS,
+                    ...updatedPosts.filter(
+                        (localPost) => !POSTS_WITH_IDS.some((initialPost) => initialPost.userId === localPost.userId)
+                    )
+                ]);
+            }
+        };
+
+        window.addEventListener('storage', handleStorageChange);
+
+        return () => {
+            window.removeEventListener('storage', handleStorageChange);
+        };
+    }, []);
+
     let deletePost = (id) => {
-        setPosts(posts.filter(post => post.userId !== id))
+        const updatedPosts = posts.filter(post => post.userId !== id);
+
+        const newPostsForStorage = updatedPosts.filter(
+            (post) => !POSTS_WITH_IDS.some((initialPost) => initialPost.userId === post.userId)
+        );
+        localStorage.setItem('posts', JSON.stringify(newPostsForStorage));
+
+        setPosts(updatedPosts)
         toast.error('Post deleted sucessfully')
     }
 
     const addPost = (newPost) => {
         const postWithId = { ...newPost, userId: generateRandomId() };
-        setPosts([postWithId, ...posts]);
+        const updatedPosts = [postWithId, ...posts];
+
+        const newPostsForStorage = [postWithId, ...(JSON.parse(localStorage.getItem('posts')) || [])];
+        localStorage.setItem('posts', JSON.stringify(newPostsForStorage));
+
+        setPosts(updatedPosts);
         toast.success('Post added successfully');
     };
 
     const updateReaction = (id) => {
-        setPosts(posts.map((post) =>
+        const updatedPosts = posts.map((post) =>
             post.userId === id ? { ...post, reactions: post.reactions + 1 } : post
-        ));
+        );
+
+        const newPostsForStorage = updatedPosts.filter(
+            (post) => !POSTS_WITH_IDS.some((initialPost) => initialPost.userId === post.userId)
+        );
+
+        localStorage.setItem('posts', JSON.stringify(newPostsForStorage));
+        setPosts(updatedPosts);
     }
 
     return (

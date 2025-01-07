@@ -23,15 +23,30 @@ const Login = () => {
             setIsLoggedIn(true);
             setuserName(userExists.name); 
             localStorage.setItem('loggedInUser', UserLogin);
-            navigate('/yourpost');
             toast.success('Logged in successfully');
+                navigate('/yourpost');
         } else {
-            toast.error('Invalid ID or Password');
+            console.log('Invalid login');
+            toast.error('Invalid ID or Password', {
+                position: 'top-center' 
+              });
         }
     };
 
     const handleSignUp = (e) => {
         e.preventDefault();
+
+        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!emailRegex.test(UserLogin.trim())) {
+            toast.error('Please enter a valid email address.');
+            return;
+        }
+
+        if (Password.length < 8) {
+            toast.error('Password must be at least 8 characters');
+            return;
+
+        }
 
         const savedUsers = JSON.parse(localStorage.getItem('users')) || [];
         const userExists = savedUsers.some((user) => user.email === UserLogin.trim());
@@ -79,7 +94,7 @@ const Login = () => {
                                 {loginType ? 'Email or User ID' : 'Email'}
                             </label>
                             <input
-                                type="text"
+                                type="email"
                                 value={UserLogin}
                                 onChange={(e) => setUserLogin(e.target.value)}
                                 className="form-control"
@@ -104,7 +119,7 @@ const Login = () => {
 
                         <button
                             onClick={loginType ? handleLogin : handleSignUp}
-                            type='submit'
+                            type='button'
                             className="btn btn-primary"
                         >
                             {loginType ? 'Login' : 'Sign Up'}
