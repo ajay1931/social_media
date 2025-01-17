@@ -17,7 +17,7 @@ const YourPost = () => {
             body={post.body}
             reactions={post.reactions}
             tags={post.tags}
-            showDelete={true}
+            showOptions={true}
           />
         </div>
       ))

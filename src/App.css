@@ -75,3 +75,6 @@
     color: blue;
     cursor: pointer;
 }
+.card-text{
+    padding: 5px;
+}

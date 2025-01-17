@@ -189,6 +189,21 @@ const PostListStore = ({ children }) => {
         setPosts(updatedPosts);
     }
 
+    const editPost = (id, editedPosts) => {
+        const updatedPosts = posts.map((post) =>
+            post.userId === id ? { ...post, ...editedPosts } : post
+        );
+
+        const newPostsForStorage = updatedPosts.filter(
+            (post) => !POSTS_WITH_IDS.some((initialPost) => initialPost.userId === post.userId)
+        );
+
+        localStorage.setItem('posts', JSON.stringify(newPostsForStorage));
+        setPosts(updatedPosts);
+        toast.success('Post updated successfully');
+    };
+
+
     return (
         <postListContext.Provider value={{
             posts,
@@ -201,6 +216,7 @@ const PostListStore = ({ children }) => {
             setPosts,
             updateReaction,
             generateRandomId,
+            editPost,
         }}>
             {children}
         </postListContext.Provider>
