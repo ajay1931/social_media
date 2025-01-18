@@ -145,6 +145,7 @@
     background-color: rgb(172, 172, 172);
     border-radius: 12px;
     padding-left: 10px;
+    text-align: center;
 }
 
 .time-span {
