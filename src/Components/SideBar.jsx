@@ -49,7 +49,7 @@ const SideBar = () => {
                 </a>
                 <ul className="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
                     <li><a onClick={handleLogout} className="dropdown-item" href="#">Logout</a></li>
-                    <li><a className="dropdown-item" href="#">Settings</a></li>
+                    <li><Link to='/settings' className={`dropdown-item ${location.pathname === '/settings' ? 'active' : ''} `} >Settings</Link></li>
                 </ul>
             </div>
         </div >

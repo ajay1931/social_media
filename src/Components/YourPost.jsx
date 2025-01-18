@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { postListContext } from '../Store/PostListStore'
-import Posts from './Posts';
+import PostList from './PostList';
 
 const YourPost = () => {
   const { posts, userName, isLoggedIn } = useContext(postListContext);
@@ -10,14 +10,14 @@ const YourPost = () => {
     <div className='Yourpost'>
       {isLoggedIn ? (createdPosts.map((post, index) => (
         <div className='Yourpost-container' key={post.userId}>
-          <Posts
+          <PostList
             key={post.userId}
             id={post.userId}
             title={post.title}
-            body={post.body}
             reactions={post.reactions}
             tags={post.tags}
-            showOptions={true}
+            img={post.img}
+            comments={post.comments}
           />
         </div>
       ))

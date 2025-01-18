@@ -10,6 +10,10 @@ import { postListContext } from './Store/PostListStore'
 import Login from './Components/Login'
 import Home from './Components/Home'
 import { Toaster } from 'react-hot-toast';
+import Profile from './Components/Profile'
+import Settings from './Components/Settings'
+import About from './Components/About'
+import Post from './Components/Post'
 
 function App() {
   const { isLoggedIn } = useContext(postListContext);
@@ -35,6 +39,10 @@ function App() {
                 <Route path='/yourpost' element={<YourPost />}></Route>
                 <Route path="/CreatePost" element={<CreatePost />}></Route>
                 <Route path="/Login" element={<Login />}></Route>
+                <Route path="/profile" element={<Profile />}></Route>
+                <Route path="/settings" element={<Settings />}></Route>
+                <Route path="/about" element={<About />}></Route>
+                <Route path="/post/:id" element={<Post />}></Route>
               </Routes>
               <Footer />
             </div>

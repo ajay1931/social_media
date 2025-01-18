@@ -69,12 +69,28 @@
     color: #d21717;
 }
 
-.Loginform-text{
+.Loginform-text {
     padding-top: 10px;
     padding-left: 30px;
     color: blue;
     cursor: pointer;
 }
-.card-text{
+
+.card-text {
+    padding: 5px;
+}
+
+.card {
+    transition: all 0.3s ease;
+    padding: 5px;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    filter: brightness(1.1);
+}
+
+.post-detail{
     padding: 5px;
 }

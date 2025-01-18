@@ -18,9 +18,9 @@ const Header = () => {
 
                         <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                             <li><Link to={'/'} className={`nav-link px-2 text-secondary ${location.pathname === '/' ? 'active and text-white' : ''} `}>Home</Link></li>
-                            <li><a href="#" className="nav-link px-2 text-secondary">Profile</a></li>
-                            <li><a href="#" className="nav-link px-2 text-secondary">Settings</a></li>
-                            <li><a href="#" className="nav-link px-2 text-secondary">About</a></li>
+                            <li><Link to={'/profile'} className={`nav-link px-2 text-secondary ${location.pathname === '/profile' ? 'active and text-white' : ''} `}>Profile</Link></li>
+                            <li><Link to={'/settings'} className={`nav-link px-2 text-secondary ${location.pathname === '/settings' ? 'active and text-white' : ''} `}>Settings</Link></li>
+                            <li><Link to={'/about'} className={`nav-link px-2 text-secondary ${location.pathname === '/about' ? 'active and text-white' : ''} `}>About</Link></li>
                         </ul>
 
                         <form className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
