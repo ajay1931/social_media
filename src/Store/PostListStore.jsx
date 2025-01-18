@@ -8,6 +8,7 @@ const POST_LIST = [
         "reactions": 395,
         "userName": "James",
         "tags": ["himalayas", "trucking", "adventure"],
+        "time": "1d",
         "img": "https://www.himalayanst.com/uploads/socialmedia/trek-in-himalaya-8-best-trekking-in-himalayas-.png",
         "comments": [
             { "userName": "Michel", "comment": "Trucking in the Himalayas must be an exhilarating experience! Stay safe!" },
@@ -20,6 +21,7 @@ const POST_LIST = [
         "reactions": 47,
         "userName": "Frank",
         "tags": ["kyoto", "temples", "peace"],
+        "time": "10d",
         "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ40_x_UeSJHEz5I7SKXC5fEZrkZSFiuL1JAw&s",
         "comments": [
             { "userName": "Alice", "comment": "Wow, Kyoto is such a beautiful place!" },
@@ -33,6 +35,7 @@ const POST_LIST = [
         "reactions": 62,
         "userName": "Hank",
         "tags": ["chennai", "vacation", "marina"],
+        "time": "22h",
         "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwcwsfSsFVjmg3KmiSISqx0jyvS3qbPluoZw&s",
         "comments": [
             { "userName": "Bob", "comment": "Enjoy your trip! Try the local food!" }
@@ -44,6 +47,7 @@ const POST_LIST = [
         "reactions": 250,
         "userName": "Sarah",
         "tags": ["northern lights", "camping", "nature"],
+        "time": "15d",
         "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgYqXeXVurkCUMZvg9YKgp9B7Z1sTWtdv6Tw&s",
         "comments": [
             { "userName": "John", "comment": "That must have been an incredible experience!" },
@@ -57,6 +61,7 @@ const POST_LIST = [
         "reactions": 10,
         "userName": "Alice",
         "tags": ["fitness", "morning", "run"],
+        "time": "5h",
         "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFvl6UhJmeTCHo_gpCR8Dn-9HESsPWfXr2Ng&s",
         "comments": []
     },
@@ -66,6 +71,7 @@ const POST_LIST = [
         "reactions": 25,
         "userName": "Grace",
         "tags": ["cooking", "pasta", "recipe"],
+        "time": "18d",
         "img": "https://media.istockphoto.com/id/1468323572/photo/close-up-photo-of-mans-hands-serving-pasta-with-fresh-vegetables.jpg?s=612x612&w=0&k=20&c=lKioto9L6rcIm7Hiw5A8q6cAac56ja0V0w579tmFmxk=",
         "comments": [
             { "userName": "Hank", "comment": "Share the recipe! Looks tasty!" }
@@ -77,6 +83,7 @@ const POST_LIST = [
         "reactions": 5,
         "userName": "Karen",
         "tags": ["gardening", "plants", "organic"],
+        "time": "2h",
         "img": "https://media.istockphoto.com/id/1323663582/photo/child-and-mother-gardening-in-vegetable-garden-in-backyard.jpg?s=612x612&w=0&k=20&c=wRB5VNXfndrbXCl-9A02pwOYuL0kBJBn6wHbslSn8_M=",
         "comments": [
             { "userName": "Charlie", "comment": "Gardening is so therapeutic!" }
@@ -88,6 +95,7 @@ const POST_LIST = [
         "reactions": 30,
         "userName": "Leo",
         "tags": ["beach", "sea", "relaxation"],
+        "time": "40m",
         "img": "https://www.dickssportinggoods.com/protips/sports-and-activities/family-fun/pack-day-beach/_jcr_content/root/container/container_2/image.coreimg.jpeg/1667590180923/beachchecklist.jpeg",
         "comments": [
             { "userName": "Alice", "comment": "That’s the best way to spend a day!" }
@@ -99,6 +107,7 @@ const POST_LIST = [
         "reactions": 18,
         "userName": "Nancy",
         "tags": ["coffee", "cafe", "local"],
+        "time": "15m",
         "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIzEwwP0GlUvVf482SMzV4NoNqtEc7Gs1Gdw&s",
         "comments": [
             { "userName": "David", "comment": "I need to check that place out!" },
@@ -112,6 +121,7 @@ const POST_LIST = [
         "reactions": 92,
         "userName": "David",
         "tags": ["paris", "travel", "streets"],
+        "time": "5d",
         "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSM_mX9nhQF7mly1iFFK_2rr84rCnUhvYYdAA&s",
         "comments": [
             { "userName": "Grace", "comment": "Paris is magical, enjoy your time!" }
@@ -123,6 +133,7 @@ const POST_LIST = [
         "reactions": 200,
         "userName": "Jack",
         "tags": ["thailand", "backpacking", "adventure"],
+        "time": "2d",
         "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrgCI6arpj462-W41Ws6Cou_QchnxqqKdzeQ&s",
         "comments": [
             { "userName": "Nancy", "comment": "Thailand is so diverse! Enjoy the journey!" },
@@ -135,6 +146,7 @@ const POST_LIST = [
         "reactions": 120,
         "userName": "Bob",
         "tags": ["london", "weekend", "sightseeing"],
+        "time": "12d",
         "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtE_bwnXwIljGQwwHD2fneoH4SZ22s6wViJw&s",
         "comments": [
             { "userName": "Charlie", "comment": "London is amazing! Have a great trip!" }
@@ -146,6 +158,7 @@ const POST_LIST = [
         "reactions": 150,
         "userName": "Mona",
         "tags": ["new york", "city", "adventure"],
+        "time": "15d",
         "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1l4rUd5bXh7PM_7SjBU6hTtBsMPEix1HWnA&s",
         "comments": []
     },
@@ -155,6 +168,7 @@ const POST_LIST = [
         "reactions": 45,
         "userName": "user-1",
         "tags": ["jog", "morning", "park"],
+        "time": "1m",
         "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQaXEf8OhJ7TgpWKgwxaUSOhV_N15xmHqOCZA&s",
         "comments": [
             { "userName": "Frank", "comment": "That’s a great way to start the day!" },
@@ -167,6 +181,7 @@ const POST_LIST = [
         "reactions": 30,
         "userName": "user-2",
         "tags": ["reading", "book", "technology"],
+        "time": "2d",
         "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqXBLK8UomZ40Z5DwmABl_aP73nkNYOhI27w&s",
         "comments": [
             { "userName": "Charlie", "comment": "What’s the book called? Sounds interesting!" },
@@ -174,7 +189,6 @@ const POST_LIST = [
         ]
     }
 ]
-
 
 export const postListContext = createContext({
     posts: [],
@@ -203,8 +217,17 @@ const PostListStore = ({ children }) => {
         return combinedPosts;
 
     });
-    const [userName, setuserName] = useState("");
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(()=>{
+        return localStorage.getItem("isLoggedIn") === "true";
+    });
+    const [userName, setuserName] = useState(()=>{
+        return localStorage.getItem("userName") || "";
+    });
+
+    useEffect(() => {
+        localStorage.setItem("isLoggedIn", isLoggedIn);
+        localStorage.setItem("userName", userName);
+    }, [isLoggedIn, userName]);
 
     useEffect(() => {
         const handleStorageChange = (event) => {

@@ -16,6 +16,7 @@ const Home = () => {
                     tags={post.tags}
                     img={post.img}
                     comments={post.comments}
+                    time={post.time}
                 />
             ))}
         </div>

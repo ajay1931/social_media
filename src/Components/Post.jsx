@@ -8,7 +8,7 @@ const Post = () => {
     const { id } = useParams();
     const { posts, updateReaction, deletePost, editPost, isLoggedIn, userName, addComment } = useContext(postListContext);
     const [post, setPost] = useState(null);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (posts.length > 0) {
@@ -16,6 +16,7 @@ const Post = () => {
             setPost(selectedPost || null);
         }
     }, [id, posts]);
+
     if (!post) {
         return <p>Post not found!</p>;
     }
@@ -46,31 +47,45 @@ const Post = () => {
 
     return (
         <div className="post-detail">
-            <h2>{post.userName}</h2>
-            {post.img && <img src={post.img} alt={post.title} style={{ width: "100%", maxHeight: "300px" }} />}
-            <h4>{post.title}</h4>
-            <h6>{post.body}</h6>
-            <p>Tags: {post.tags.join(", ")}</p>
-            <span className='reactions'>
-                <FcLike onClick={() => updateReaction(id)} />
-                <p style={{ paddingTop: '15px' }}>{post.reactions}</p>
-                <FaRegCommentDots />
-                <p style={{ paddingTop: '15px' }}>{post.comments.length || 0}</p>
-            </span>
-            {isLoggedIn && post.userName === userName ? (
-                <div className="post-actions">
-                    <button className="btn btn-warning m-2" onClick={handleEdit}>Edit</button>
-                    <button className="btn btn-danger m-2" onClick={handleDelete}>Delete</button>
-                    <button className="btn btn-info m-2" onClick={handleAddComment}>Comment</button>
+            <div className="post-content">
+                {/* Left side (Image) */}
+                {post.img && (
+                    <div className="post-img">
+                        <img src={post.img} alt={post.title} />
+                    </div>
+                )}
+
+                {/* Right side (Post details) */}
+                <div className="post-details">
+                    <h2 className='post-details-h2'>{post.userName} </h2>
+                    <h4>{post.title}</h4>
+                    <h6>{post.body}</h6>
+                    <p>Tags: {post.tags.join(", ")}</p>
+                    <span className="reactions">
+                        <FcLike onClick={() => updateReaction(id)} />
+                        <p>{post.reactions}</p>
+                        <FaRegCommentDots />
+                        <p>{post.comments.length || 0}</p>
+                    </span>
+                    <p>Posted on: {post.time}</p>
+
+                    {isLoggedIn && post.userName === userName ? (
+                        <div className="post-actions">
+                            <button className="btn btn-warning m-2" onClick={handleEdit}>Edit</button>
+                            <button className="btn btn-danger m-2" onClick={handleDelete}>Delete</button>
+                            <button className="btn btn-info m-2" onClick={handleAddComment}>Comment</button>
+                        </div>
+                    ) : (
+                        <button className="btn btn-info m-2" onClick={handleAddComment}>Comment</button>
+                    )}
+
+                    <div className="comments">
+                        <h5>Comments:</h5>
+                        {post.comments.map((comment, index) => (
+                            <p key={index}><strong>{comment.userName}:</strong> {comment.comment}</p>
+                        ))}
+                    </div>
                 </div>
-            ) : (
-                <button className="btn btn-info m-2" onClick={handleAddComment}>Comment</button>
-            )}
-            <div className="comments">
-                <h5>Comments:</h5>
-                {post.comments.map((comment, index) => (
-                    <p key={index}><strong>{comment.userName}:</strong> {comment.comment}</p>
-                ))}
             </div>
         </div>
     );

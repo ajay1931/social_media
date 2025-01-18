@@ -7,20 +7,29 @@ const CreatePost = () => {
     let title = useRef();
     let body = useRef();
     let tags = useRef();
+    let img = useRef();
 
     let submit = (event) => {
         event.preventDefault();
+
+        const selectedFile = img.current.files[0];
+        const imageUrl = selectedFile ? URL.createObjectURL(selectedFile) : null;
+
         let newpost = {
             userName: userName,
             title: title.current.value,
             body: body.current.value,
             tags: tags.current.value.split(',').map(e => e.trim()),
-            reactions: 0
+            reactions: 0,
+            comments: [],
+            time:'Now',
+            img: imageUrl
         }
         addPost(newpost)
         title.current.value = ''
         body.current.value = ''
         tags.current.value = ''
+        img.current.value = ''
 
     };
 
@@ -43,6 +52,16 @@ const CreatePost = () => {
                             id="title"
                             placeholder='Enter your post tittle here'
                             required />
+                    </div>
+                    <div className="mb-3">
+                        <label className="form-label">Post Image</label>
+                        <input
+                            ref={img}
+                            type="file"
+                            className="form-control"
+                            accept="image/*"
+                            required
+                        />
                     </div>
                     <div className="mb-3">
                         <label className="form-label">Post content</label>
@@ -70,7 +89,7 @@ const CreatePost = () => {
                 </form>
             ) : (
                 alert('Please Login and create post')
-                
+
             )}
         </div>
     )
