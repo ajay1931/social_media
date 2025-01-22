@@ -205,22 +205,26 @@ const generateRandomId = () => {
 
 const POSTS_WITH_IDS = POST_LIST.map(post => ({
     ...post,
-    userId: generateRandomId()
+    userId: generateRandomId(),
+    isVisible: true
 }));
 
 const PostListStore = ({ children }) => {
     const [posts, setPosts] = useState(() => {
         const localPosts = JSON.parse(localStorage.getItem('posts')) || [];
-        const combinedPosts = [...POSTS_WITH_IDS, ...localPosts.filter(
-            (localPost) => !POSTS_WITH_IDS.some((initialPost) => initialPost.userId === localPost.userId)
-        )];
+        const combinedPosts = [
+            ...localPosts,
+            ...POSTS_WITH_IDS.filter((initialPost) => 
+                !localPosts.some((localPost) => localPost.userId === initialPost.userId)
+            ),
+        ];
         return combinedPosts;
 
     });
-    const [isLoggedIn, setIsLoggedIn] = useState(()=>{
+    const [isLoggedIn, setIsLoggedIn] = useState(() => {
         return localStorage.getItem("isLoggedIn") === "true";
     });
-    const [userName, setuserName] = useState(()=>{
+    const [userName, setuserName] = useState(() => {
         return localStorage.getItem("userName") || "";
     });
 
@@ -262,12 +266,12 @@ const PostListStore = ({ children }) => {
     }
 
     const addPost = (newPost) => {
-        const postWithId = { ...newPost, userId: generateRandomId() };
+        const postWithId = { ...newPost, userId: generateRandomId(),isVisible: true };
         const updatedPosts = [postWithId, ...posts];
 
         const newPostsForStorage = [postWithId, ...(JSON.parse(localStorage.getItem('posts')) || [])];
-        localStorage.setItem('posts', JSON.stringify(newPostsForStorage));
 
+        localStorage.setItem('posts', JSON.stringify(newPostsForStorage));
         setPosts(updatedPosts);
         toast.success('Post added successfully');
     };
@@ -276,14 +280,11 @@ const PostListStore = ({ children }) => {
         const updatedPosts = posts.map((post) =>
             post.userId === id ? { ...post, reactions: post.reactions + 1 } : post
         );
-
-        const newPostsForStorage = updatedPosts.filter(
-            (post) => !POSTS_WITH_IDS.some((initialPost) => initialPost.userId === post.userId)
-        );
-
-        localStorage.setItem('posts', JSON.stringify(newPostsForStorage));
+   
+        localStorage.setItem('posts', JSON.stringify(updatedPosts));
         setPosts(updatedPosts);
-    }
+    };
+   
 
     const editPost = (id, editedPosts) => {
         const updatedPosts = posts.map((post) =>
@@ -301,17 +302,28 @@ const PostListStore = ({ children }) => {
 
     const addComment = (id, commentData) => {
         const updateComment = posts.map((post) =>
-            post.userId === id ?{ ...post, comments: [...post.comments, commentData] } : post
+            post.userId === id ? { ...post, comments: [...post.comments, commentData] } : post
         );
 
-        const newPostsForStorage =updateComment.filter(
-            (post) =>!POSTS_WITH_IDS.some((initialPost)=>initialPost.userId === post.userId)
+        const newPostsForStorage = updateComment.filter(
+            (post) => !POSTS_WITH_IDS.some((initialPost) => initialPost.userId === post.userId)
         );
 
-        localStorage.setItem('posts',JSON.stringify(newPostsForStorage));
+        localStorage.setItem('posts', JSON.stringify(newPostsForStorage));
         setPosts(updateComment);
         toast.success('comment added successfully')
     }
+
+    const postVisibility = (id) => {
+        const updatedPosts = posts.map((post) =>
+            post.userId === id ? { ...post, isVisible: !post.isVisible } : post
+        );
+
+        const hiddenItems = updatedPosts.filter(post => !post.isVisible)
+
+        localStorage.setItem('hiddenPost', JSON.stringify(hiddenItems));
+        setPosts(updatedPosts);
+    };
 
     return (
         <postListContext.Provider value={{
@@ -327,6 +339,7 @@ const PostListStore = ({ children }) => {
             generateRandomId,
             editPost,
             addComment,
+            postVisibility,
         }}>
             {children}
         </postListContext.Provider>

@@ -4,9 +4,11 @@ import PostList from './PostList'
 
 const Home = () => {
     const { posts } = useContext(postListContext)
+    const visiblePosts = posts.filter(post => post.isVisible); 
+
     return (
         <div className='Home'>
-            {posts.map((post, index) => (
+            {visiblePosts.map((post, index) => (
                 <PostList
                     key={index}
                     userName={post.userName}

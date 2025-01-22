@@ -3,15 +3,16 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { postListContext } from '../Store/PostListStore';
 import { FcLike } from "react-icons/fc";
 import { FaRegCommentDots } from "react-icons/fa6";
+import toast from 'react-hot-toast';
 
 const Post = () => {
     const { id } = useParams();
-    const { posts, updateReaction, deletePost, editPost, isLoggedIn, userName, addComment } = useContext(postListContext);
+    const { posts, updateReaction, deletePost, editPost, isLoggedIn, userName, addComment, postVisibility } = useContext(postListContext);
     const [post, setPost] = useState(null);
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (posts.length > 0) {
+        if (posts.length > 0 || 0) {
             const selectedPost = posts.find(p => p.userId == id);
             setPost(selectedPost || null);
         }
@@ -21,7 +22,7 @@ const Post = () => {
         return <p>Post not found!</p>;
     }
 
-    const handleEdit = (id) => {
+    const handleEdit = () => {
         const updateTitle = prompt("Edit the post title:", post.title);
         const updateBody = prompt("Edit the post body:", post.body);
         const updateTag = prompt("Edit the post tag:", post.tags.join(","));
@@ -45,17 +46,29 @@ const Post = () => {
         }
     };
 
+    const handleHide = (id) => {
+        postVisibility(id);
+        window.confirm('Are you sure want to hide this post');
+        toast.success('post hide successfully');
+    };
+
+    const handleUnHide = (id) => {
+        postVisibility(id);
+        window.confirm('Are you sure want to show this post');
+        toast.success('post unhide successfully');
+    }
+
     return (
         <div className="post-detail">
             <div className="post-content">
-                {/* Left side (Image) */}
+                {/* Left side */}
                 {post.img && (
                     <div className="post-img">
                         <img src={post.img} alt={post.title} />
                     </div>
                 )}
 
-                {/* Right side (Post details) */}
+                {/* Right side */}
                 <div className="post-details">
                     <h2 className='post-details-h2'>{post.userName} </h2>
                     <h4>{post.title}</h4>
@@ -74,6 +87,11 @@ const Post = () => {
                             <button className="btn btn-warning m-2" onClick={handleEdit}>Edit</button>
                             <button className="btn btn-danger m-2" onClick={handleDelete}>Delete</button>
                             <button className="btn btn-info m-2" onClick={handleAddComment}>Comment</button>
+                            {post.isVisible ? (
+                                <button className='btn btn-secondary' onClick={() => handleHide(id)}> Hide</button>
+                            ) : (
+                                <button className='btn btn-secondary' onClick={() => handleUnHide(id)}> Unhide</button>
+                            )}
                         </div>
                     ) : (
                         <button className="btn btn-info m-2" onClick={handleAddComment}>Comment</button>
